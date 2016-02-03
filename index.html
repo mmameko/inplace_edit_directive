@@ -12,8 +12,9 @@
     <script type="application/javascript" src="app/directives/editField.js"></script>
 </head>
 <body ng-app="app">
-
-    <!--Add "items" attribute (items="...items array...") to display items in select component (in case of using type="select")-->
-    <edit-field value="Text" type="input" placeholder="Double click to edit"></edit-field>
+    <div ng-controller="mainCtrl">
+        <!--Add "items" attribute (items="...items array...") to display items in select component (in case of using type="select")-->
+        <edit-field type="input" placeholder="Double click to edit" items="selectItems"></edit-field>
+    </div>
 </body>
 </html>

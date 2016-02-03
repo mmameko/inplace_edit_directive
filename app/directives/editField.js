@@ -6,12 +6,10 @@ app.directive('editField', function(){
     return {
         restrict: 'E',
         template: '<div class="component-edit-field" ng-switch on="type">' +
-        '<span ng-hide="inEdit" ng-class="value ? \'value\' : \'placeholder\'">{{ value || placeholder }}</span>' +
-
-        '<input ng-switch-when="input" ng-show="inEdit" type="text" ng-model="$parent.value" autofocus/>' +
-        '<select ng-switch-when="select" ng-show="inEdit" ng-options="item for item in $parent.items" ng-model="$parent.value" autofocus></select>' +
-        '<input ng-switch-default type="text" ng-show="inEdit" ng-model="$parent.value" autofocus/>' +
-
+            '<span ng-hide="inEdit" ng-class="value ? \'value\' : \'placeholder\'">{{ value || placeholder }}</span>' +
+            '<input ng-switch-when="input" ng-show="inEdit" type="text" ng-model="$parent.value" autofocus/>' +
+            '<select ng-switch-when="select" ng-show="inEdit" ng-options="item for item in $parent.items" ng-model="$parent.value" autofocus></select>' +
+            '<input ng-switch-default type="text" ng-show="inEdit" ng-model="$parent.value" autofocus/>' +
         '</div>',
         replace: true,
         link: function(scope, el, attr){
@@ -37,11 +35,10 @@ app.directive('editField', function(){
                         scope.inEdit = false;
                     });
                 }
-
             });
         },
         scope: {
-            value: '@',
+            value: '@defaultValue',
             placeholder: '@',
             type: '@',
             inEdit: '@',        // allow set appropriate mode in element attributes
