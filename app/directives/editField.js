@@ -19,10 +19,7 @@ app.directive('editField', function(){
                 REVERT_KEY_CODE = 27,
                 SAVE_KEY_CODE = 13;
 
-            scope.value = scope.type === 'input' ? scope.value : '';
-            console.log(scope.value);
-
-            scope.setEditable = function(){
+            scope.setEditable = function(e){
                 scope.inEdit = true;
             };
 
