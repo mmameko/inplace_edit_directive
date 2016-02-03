@@ -8,7 +8,7 @@ app.directive('editField', function(){
         template: '<div class="component-edit-field" ng-switch on="type">' +
             '<span ng-hide="inEdit" ng-class="value ? \'value\' : \'placeholder\'">{{ value || placeholder }}</span>' +
             '<input ng-switch-when="input" ng-show="inEdit" type="text" ng-model="$parent.value" autofocus/>' +
-            '<select ng-switch-when="select" ng-show="inEdit" ng-options="item for item in $parent.items" ng-model="$parent.value" autofocus></select>' +
+            '<select ng-switch-when="select" ng-show="inEdit" ng-options="item for item in $parent.items()" ng-model="$parent.value" autofocus></select>' +
             '<input ng-switch-default type="text" ng-show="inEdit" ng-model="$parent.value" autofocus/>' +
         '</div>',
         replace: true,
@@ -16,6 +16,8 @@ app.directive('editField', function(){
             var previous = scope.value,
                 REVERT_KEY_CODE = 27,
                 SAVE_KEY_CODE = 13;
+
+            console.log(scope.items());
 
             el.on('dblclick', function(e){
                 scope.$apply(function(){
@@ -42,7 +44,7 @@ app.directive('editField', function(){
             placeholder: '@',
             type: '@',
             inEdit: '@',        // allow set appropriate mode in element attributes
-            items: '='
+            items: '&items'     // one way binding
         }
     };
 });
