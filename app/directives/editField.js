@@ -6,11 +6,11 @@ app.directive('editField', function(){
     return {
         restrict: 'E',
         template: '<div class="component-edit-field" ng-switch on="type">' +
-        '<span ng-hide="inEdit" ng-class="value ? \'value\' : \'placeholder\'" ng-dblclick="setEditable()">{{ value || placeholder }}</span>' +
+        '<span ng-hide="inEdit" ng-class="value ? \'value\' : \'placeholder\'">{{ value || placeholder }}</span>' +
 
-        '<input ng-switch-when="input" ng-show="inEdit" type="text" ng-model="$parent.value" ng-keydown="saveRevertHandler($event)" autofocus/>' +
-        '<select ng-switch-when="select" ng-show="inEdit" ng-options="item for item in $parent.items" ng-keydown="saveRevertHandler($event)" ng-model="$parent.value" autofocus></select>' +
-        '<input ng-switch-default type="text" ng-show="inEdit" ng-model="$parent.value" ng-keydown="saveRevertHandler($event)" autofocus/>' +
+        '<input ng-switch-when="input" ng-show="inEdit" type="text" ng-model="$parent.value" autofocus/>' +
+        '<select ng-switch-when="select" ng-show="inEdit" ng-options="item for item in $parent.items" ng-model="$parent.value" autofocus></select>' +
+        '<input ng-switch-default type="text" ng-show="inEdit" ng-model="$parent.value" autofocus/>' +
 
         '</div>',
         replace: true,
@@ -19,22 +19,29 @@ app.directive('editField', function(){
                 REVERT_KEY_CODE = 27,
                 SAVE_KEY_CODE = 13;
 
-            scope.setEditable = function(e){
-                scope.inEdit = true;
-            };
+            el.on('dblclick', function(e){
+                scope.$apply(function(){
+                    scope.inEdit = true;
+                });
+            });
 
-            scope.saveRevertHandler = function(e){
+            el.on('keydown', function(e){
                 if(e.keyCode === REVERT_KEY_CODE){
-                    scope.inEdit = false;
-                    scope.value = previous;
+                    scope.$apply(function(){
+                        scope.inEdit = false;
+                        scope.value = previous;
+                    });
                 } else if(e.keyCode === SAVE_KEY_CODE){
                     previous = scope.value;
-                    scope.inEdit = false;
+                    scope.$apply(function(){
+                        scope.inEdit = false;
+                    });
                 }
-            };
+
+            });
         },
         scope: {
-            value: '@',         // default value of field
+            value: '@',
             placeholder: '@',
             type: '@',
             inEdit: '@',        // allow set appropriate mode in element attributes

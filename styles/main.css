@@ -17,6 +17,10 @@
     display: inline-block;
     width: 150px;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
 }
 
 .component-edit-field .value{
