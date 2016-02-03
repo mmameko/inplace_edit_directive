@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit In-Place</title>
+
+    <link rel="stylesheet" href="styles/main.css" type="text/css"/>
+
+    <script type="application/javascript" src="lib/angular.min.js"></script>
+    <script type="application/javascript" src="app/app.js"></script>
+    <script type="application/javascript" src="app/directives/editField.js"></script>
+</head>
+<body ng-app="app">
+    <edit-field value="Text" type="input" placeholder="Double click to edit" items="['Text1', 'Text2', 'Text3']"></edit-field>
+</body>
+</html>

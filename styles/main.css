@@ -1,0 +1,44 @@
+.component-edit-field{
+    display: inline-block;
+    background-color: #deb3ff;
+    height: 35px;
+    line-height: 35px;
+    color: #333;
+    padding: 0 5px;
+    margin: 5px;
+    border-radius: 3px;
+}
+
+.component-edit-field:hover{
+    cursor: pointer;
+}
+
+.component-edit-field span{
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+
+.component-edit-field .value{
+    font-weight: 700;
+}
+
+.component-edit-field .placeholder{
+    font-style: italic;
+    color: #777;
+}
+
+.component-edit-field input,
+.component-edit-field select{
+    width: 150px;
+    line-height: 20px;
+    border-radius: 3px;
+    border: none;
+    padding-left: 5px;
+    border: 1px solid #d896ff;
+}
+
+.component-edit-field input:focus{
+    outline: 1px solid #d896ff;
+    background-color: #f2ffee;
+}
