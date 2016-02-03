@@ -11,6 +11,7 @@
 
 .component-edit-field:hover{
     cursor: pointer;
+    background-color: #d896ff;
 }
 
 .component-edit-field span{
