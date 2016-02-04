@@ -17,8 +17,6 @@ app.directive('editField', function(){
                 REVERT_KEY_CODE = 27,
                 SAVE_KEY_CODE = 13;
 
-            console.log(scope.items());
-
             el.on('dblclick', function(e){
                 scope.$apply(function(){
                     scope.inEdit = true;
